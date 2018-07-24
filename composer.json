@@ -1,0 +1,20 @@
+{
+    "name": "framework",
+    "authors": [
+        {
+            "name": "Jason",
+            "email": "jason@ipedis.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Group\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Group\\Tests\\": "tests/"
+        }
+    }
+}
