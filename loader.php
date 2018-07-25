@@ -12,9 +12,12 @@ function loader($class){
     if(file_exists($class_file)){
         require_once($class_file);
     }else{
-        foreach (unserialize(AUTOLOAD_CLASSES) as $path){
+        foreach (AUTOLOAD_CLASSES as $path){
             $class_file = $path . DS . $class . '.php';
             if(file_exists($class_file)) require_once($class_file);
         }
     }
 }
+
+//allow php to look for the loader.php loader function
+spl_autoload_register('loader');

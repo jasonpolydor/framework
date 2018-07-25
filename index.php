@@ -1,7 +1,17 @@
 <?php
 
-$name = isset($_GET['name'])? $_GET['name'] : 'World';
+ini_set('display_errors', 1);
 
-header('Content-Type: text/html; charset=utf-8');
+//autoloading with + without Composer
 
-printf('Hello %s', htmlspecialchars($name, ENT_QUOTES, 'UTF-8'));
+//without
+//require_once('loader.php');
+//require_once('constants.php');
+
+
+//with
+require_once('vendor/autoload.php');
+
+use \Src\Classes\Test;
+
+$test = new Test;

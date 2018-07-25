@@ -9,12 +9,13 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "Group\\": "src/"
+            "Src\\": "src/",
+            "Src\\Classes\\": "src/Classes/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Group\\Tests\\": "tests/"
+            "Src\\Tests\\": "src/tests/"
         }
     }
 }
