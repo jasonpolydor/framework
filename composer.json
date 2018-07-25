@@ -9,13 +9,12 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "Src\\": "src/",
-            "Src\\Classes\\": "src/Classes/"
+            "JasonFramework\\Bundle\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Src\\Tests\\": "src/tests/"
+            "JasonFramework\\Bundle\\Tests\\": "src/tests/"
         }
     }
 }

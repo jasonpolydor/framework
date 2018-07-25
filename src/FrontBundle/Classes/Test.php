@@ -1,6 +1,6 @@
 <?php
 
-namespace Src\Classes;
+namespace JasonFramework\Bundle\FrontBundle\Classes;
 /**
  * Created by PhpStorm.
  * User: digital14

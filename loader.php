@@ -1,23 +1,55 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: digital14
- * Date: 7/24/18
- * Time: 5:41 PM
+ * Date: 7/25/18
+ * Time: 10:50 AM
  */
 
-function loader($class){
-    $class_file = DIR. DS . $class . '.php';
+/**
+ * Class Loader define routing of url to map on controller and execute its specific actions
+ */
+class Loader
+{
+    private $url;
+    private $controller;
+    private $action;
 
-    if(file_exists($class_file)){
-        require_once($class_file);
-    }else{
-        foreach (AUTOLOAD_CLASSES as $path){
-            $class_file = $path . DS . $class . '.php';
-            if(file_exists($class_file)) require_once($class_file);
+    function __construct( $url )
+    {
+        if(!empty($_GET)){
+            $this->url = $_GET;
+        }
+
+        if(isset($this->url['controller'])){
+            $this->controller = $this->url['controller'];
+        }else{
+            $this->controller = 'home';
+        }
+
+        if(isset($this->url['action'])){
+            $this->action = $this->url['action'];
+        }else{
+            $this->action = 'index';
+        }
+    }
+
+    function createController(){
+        if(class_exists($this->controller)){
+            $parent = class_parents($this->controller);
+
+            if(in_array('BaseController', $parent)){
+                if(method_exists($this->controller, $this->action)){
+                    return new $this->controller($this->url, $this->action);
+                }else{
+                    throw new \Exception("Method {$this->action} does not exist.");
+                }
+            }else{
+                throw new \Exception("BaseController of Controller {$this->controller} not found.");
+            }
+        }else{
+            throw new \Exception("Controller {$this->controller} not found.");
         }
     }
 }
-
-//allow php to look for the loader.php loader function
-spl_autoload_register('loader');
