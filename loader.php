@@ -16,6 +16,8 @@ class Loader
     private $controller;
     private $action;
 
+    private $namespace = "JasonFramework\\Bundle\\FrontBundle\\Controllers\\";
+
     function __construct( $url )
     {
         if(!empty($_GET)){
@@ -23,9 +25,9 @@ class Loader
         }
 
         if(isset($this->url['controller'])){
-            $this->controller = $this->url['controller'];
+            $this->controller = $this->namespace . $this->url['controller'];
         }else{
-            $this->controller = 'home';
+            $this->controller = $this->namespace . 'Home';
         }
 
         if(isset($this->url['action'])){
@@ -33,9 +35,13 @@ class Loader
         }else{
             $this->action = 'index';
         }
+        var_dump($this->controller);
     }
 
     function createController(){
+        var_dump('in create controller');
+        var_dump($this->controller);
+        var_dump(class_exists($this->controller));
         if(class_exists($this->controller)){
             $parent = class_parents($this->controller);
 

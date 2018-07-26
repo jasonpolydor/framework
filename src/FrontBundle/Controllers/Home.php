@@ -9,7 +9,7 @@
 namespace JasonFramework\Bundle\FrontBundle\Controllers;
 
 
-class HomeController extends BaseController
+class Home extends BaseController
 {
 
 }

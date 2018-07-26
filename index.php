@@ -18,7 +18,7 @@ use \JasonFramework\Bundle\FrontBundle\Classes\Test;
 $test = new Test;
 
 //for security reason allow only controller listed below
-$expected_controllers = ['index', 'home'];
+$expected_controllers = ['Index', 'Home'];
 
 if(!empty($_GET)){
     if(in_array($_GET['controller'], $expected_controllers)){
